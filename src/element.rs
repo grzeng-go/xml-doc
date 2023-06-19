@@ -147,7 +147,7 @@ impl ElementBuilder {
 ///
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Element {
-    id: usize,
+    pub id: usize,
 }
 
 impl Element {
