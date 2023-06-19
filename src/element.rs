@@ -1,6 +1,7 @@
 use crate::document::{Document, Node};
 use crate::error::{Error, Result};
 use std::collections::HashMap;
+use std::slice::Iter;
 
 #[derive(Debug)]
 pub(crate) struct ElementData {
@@ -511,6 +512,14 @@ impl Element {
             .filter(|e| e.name(doc) == name)
             .collect()
     }
+
+    /// 外部直接对child element 进行 iter操作
+    pub fn find_with_fn<F>(&self, doc: &Document, f: F) -> Vec<Element> 
+        where F: Fn(Iter<'_, Node>) -> Vec<Element>,
+    {
+        f(self.children(doc).iter())
+    }
+    
 }
 
 /// Below are functions that modify its tree-structure.

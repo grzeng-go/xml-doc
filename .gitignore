@@ -1,3 +1,5 @@
 /target
 benches/target
 Cargo.lock
+/.idea
+*.imp
