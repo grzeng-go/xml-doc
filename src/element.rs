@@ -514,8 +514,8 @@ impl Element {
     }
 
     /// 外部直接对child element 进行 iter操作
-    pub fn find_with_fn<F>(&self, doc: &Document, f: F) -> Vec<Element> 
-        where F: Fn(Iter<'_, Node>) -> Vec<Element>,
+    pub fn find_with_fn<F, R>(&self, doc: &Document, f: F) -> R 
+        where F: Fn(Iter<'_, Node>) -> R,
     {
         f(self.children(doc).iter())
     }
